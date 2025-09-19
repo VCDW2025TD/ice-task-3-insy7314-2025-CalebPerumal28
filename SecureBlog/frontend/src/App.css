@@ -1,0 +1,500 @@
+/* ===== Base Setup ===== */
+:root {
+  --bg: #0b1020;
+  --panel: #0f172a;
+  --panel-2: #0c1326;
+  --glass: rgba(255, 255, 255, 0.04);
+  --primary: #22d3ee;   /* cyan-400 */
+  --primary-2: #67e8f9; /* cyan-300 */
+  --text: #e5e7eb;      /* gray-200 */
+  --muted: #94a3b8;     /* slate-400 */
+  --ring: rgba(103, 232, 249, 0.35);
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+html, body, #root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  background: radial-gradient(1000px 600px at 10% -10%, #13203f, transparent 60%), var(--bg);
+}
+
+.container {
+  width: min(1200px, 92%);
+  margin-inline: auto;
+}
+
+.home {
+  position: relative;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* ===== Topbar ===== */
+.topbar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  font-size: 1.1rem;
+}
+.brand span {
+  color: var(--primary);
+}
+
+.nav {
+  display: none;
+  gap: 18px;
+}
+.link {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+.link:hover {
+  color: var(--text);
+  background: var(--glass);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn.primary {
+  background: linear-gradient(to right, var(--primary), var(--primary-2));
+  color: #0b1020;
+  box-shadow: 0 6px 20px var(--ring);
+}
+.btn.primary:hover {
+  transform: translateY(-1px);
+}
+.btn.ghost {
+  background: transparent;
+  border-color: #1f2a44;
+  color: var(--text);
+}
+.btn.ghost:hover {
+  border-color: var(--primary);
+  color: var(--primary-2);
+}
+.btn.lg {
+  padding: 12px 20px;
+}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  z-index: 2;
+  padding: 64px 0 24px;
+  text-align: center;
+}
+.hero-title {
+  font-size: clamp(2rem, 4vw + 0.5rem, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: 0.2px;
+  margin: 0;
+}
+.hero-sub {
+  margin: 14px auto 26px;
+  color: var(--muted);
+  width: min(780px, 92%);
+  font-size: 1.05rem;
+}
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badges {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0 0;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: var(--muted);
+}
+.badges li {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid #1f2a44;
+  font-size: 0.92rem;
+}
+
+/* ===== Features ===== */
+.features {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 52px 0 14px;
+}
+@media (min-width: 768px) {
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.feature-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid #1f2a44;
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+}
+.feature-card h3 {
+  margin: 4px 0 8px;
+  font-size: 1.1rem;
+}
+.feature-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ===== Showcase ===== */
+.showcase {
+  margin: 50px 0;
+  position: relative;
+}
+.showcase-card {
+  background: linear-gradient(180deg, #0e162d, #0b1226);
+  border: 1px solid #1f2a44;
+  border-radius: 20px;
+  padding: 28px;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+.showcase-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.showcase-sub {
+  color: var(--muted);
+  margin-top: 6px;
+  margin-bottom: 18px;
+}
+.showcase-window {
+  border: 1px solid #1f2a44;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0a1123;
+}
+.window-dots {
+  display: flex;
+  gap: 6px;
+  padding: 10px;
+  border-bottom: 1px solid #182343;
+}
+.window-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2b385f;
+  display: inline-block;
+}
+.window-body {
+  padding: 18px;
+}
+.window-body h3 {
+  margin: 0 0 6px;
+}
+.window-body p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ===== CTA ===== */
+.cta {
+  margin: 60px 0 80px;
+}
+.cta-inner {
+  background: radial-gradient(600px 200px at 10% 0%, rgba(34,211,238,0.12), transparent 70%),
+              linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid #1f2a44;
+  border-radius: 22px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.cta-inner h2 {
+  margin: 0 0 6px;
+}
+.cta-inner p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+.cta-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ===== Footer ===== */
+.footer {
+  border-top: 1px solid #1f2a44;
+  padding: 26px 0 36px;
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  text-align: center;
+  color: var(--muted);
+}
+.foot-links {
+  display: flex;
+  gap: 16px;
+}
+.copy {
+  font-size: 0.9rem;
+}
+
+/* ===== Responsive Nav ===== */
+@media (min-width: 900px) {
+  .nav {
+    display: flex;
+  }
+}
+/* === Fix Pack: polish, alignment, contrast, spacing === */
+
+/* Ensure page background is consistently dark (prevents “white bands”) */
+.home {
+  background: radial-gradient(1000px 600px at 10% -10%, #13203f 0%, transparent 60%), var(--bg);
+}
+
+/* Section rhythm to avoid cramping and shadow cropping */
+.hero { padding: 84px 0 32px; }
+.features { margin: 64px 0 8px; padding-bottom: 8px; }
+.showcase { margin: 64px 0; }
+.cta { margin: 72px 0 96px; }
+
+/* Keep particles purely decorative */
+.particles { pointer-events: none; }
+
+/* Feature cards: stronger, darker shadow; remove pale “edge” */
+.feature-card {
+  box-shadow: 0 10px 24px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.02) inset;
+  border: 1px solid rgba(31, 42, 68, 0.9);
+  background: linear-gradient(180deg, rgba(16,24,48,0.55), rgba(12,18,38,0.55));
+}
+
+/* Showcase card: unify tone with features */
+.showcase-card {
+  background: linear-gradient(180deg, #0e152b, #0b1226);
+  border: 1px solid rgba(31, 42, 68, 0.9);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.5);
+}
+
+/* CTA: darker glass + subtle cyan ring so it doesn't look white */
+.cta-inner {
+  background:
+    radial-gradient(500px 160px at 15% -10%, rgba(34,211,238,0.10), transparent 70%),
+    linear-gradient(180deg, rgba(10,17,35,0.7), rgba(9,15,32,0.65));
+  border: 1px solid rgba(31, 42, 68, 0.9);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(103, 232, 249, 0.08) inset;
+}
+.cta-inner h2 { color: var(--text); opacity: 0.95; }
+.cta-inner p { color: var(--muted); }
+
+/* Buttons in CTA: add gentle glow so they anchor */
+.cta .btn.primary { box-shadow: 0 10px 24px var(--ring); }
+.cta .btn.ghost { border-color: #223053; }
+
+/* Footer: reduce the stark separator & add breathing room */
+.footer {
+  border-top: 1px solid rgba(31,42,68,0.6);
+  padding: 34px 0 46px;
+}
+.footer .brand { opacity: 0.95; }
+.foot-links .link { color: var(--muted); }
+.copy { color: color-mix(in oklab, var(--muted) 85%, white 15%); }
+
+/* Max-width guardrails for ultra-wide screens */
+.container {
+  width: min(1100px, 92%);
+}
+
+/* Badge pills: slightly dimmer border for cohesion */
+.badges li {
+  border-color: rgba(31,42,68,0.8);
+  background: rgba(255,255,255,0.025);
+}
+
+/* Topbar: align actions vertically-centered on tall screens */
+.topbar .actions { align-items: center; }
+
+/* Subtle hover lift for CTA group */
+.hero-cta .btn:hover { transform: translateY(-1px); }
+
+/* Smooth section edges on mobile so shadows don't clip */
+@media (max-width: 720px) {
+  .feature-card, .showcase-card, .cta-inner {
+    border-radius: 18px;
+  }
+  .features, .showcase, .cta {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Optional: micro separator lines for completeness (very subtle) */
+.section-sep {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(31,42,68,0.6) 15%,
+    rgba(31,42,68,0.6) 85%,
+    transparent 100%
+  );
+  margin: 48px 0;
+  border: 0;
+}
+/* === Section alignment fix === */
+
+/* Ensure every section centers like hero/footer */
+.features.container,
+.showcase.container,
+.cta.container {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* Features: proper 3-column grid centered */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  justify-items: center;   /* center cards inside grid cells */
+}
+
+/* Feature cards: consistent max width */
+.feature-card {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* Showcase block: centered and limited width */
+.showcase-card {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left; /* keep text left-aligned inside */
+}
+/* --- Kill horizontal overflow (white gutter on right) --- */
+html, body, #root, .home { 
+  overflow-x: hidden;
+}
+
+/* Ensure all full-bleed backgrounds/canvases don't exceed viewport */
+#tsparticles,
+.particles { 
+  position: absolute; 
+  inset: 0; 
+  max-width: 100%;
+}
+
+/* tsparticles sometimes renders a canvas slightly wider than viewport */
+.tsparticles-canvas-el {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;              /* removes inline-canvas extra gap */
+}
+
+/* Safer container width calc (avoids 100vw scrollbar math issues) */
+.container {
+  width: min(1100px, calc(100% - 32px)); /* 16px side breathing room */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* If any legacy styles still use 100vw, cap them */
+[class*="app-container"], [class*="full-bleed"] {
+  max-width: 100%;
+}
+
+/* Optional: just in case any element causes tiny overflow with shadows */
+* { box-sizing: border-box; }
+
+/* Container = auto-centered with consistent padding */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Reset any accidental shifts from flex/grid */
+.features, .showcase, .cta, .hero {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+/* Kill any extra background strip on the right */
+html, body, #root, .home {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #0b1020; /* your base bg */
+}
+
+/* tsparticles canvas fix */
+#tsparticles,
+.particles,
+.tsparticles-canvas-el {
+  position: fixed !important;   /* pin it to the viewport */
+  top: 0;
+  left: 0;
+  width: 100vw !important;      /* exactly viewport width */
+  height: 100vh !important;     /* exactly viewport height */
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  overflow: hidden;
+}

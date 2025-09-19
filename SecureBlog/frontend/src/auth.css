@@ -1,0 +1,196 @@
+/* ===== Global auth layout ===== */
+:root {
+  --bg: #0b1020;
+  --panel: #0f172a;
+  --panel-2: #0c1326;
+  --glass: rgba(255, 255, 255, 0.04);
+  --primary: #22d3ee;   /* cyan-400 */
+  --primary-2: #67e8f9; /* cyan-300 */
+  --text: #e5e7eb;      /* gray-200 */
+  --muted: #94a3b8;     /* slate-400 */
+  --ring: rgba(103, 232, 249, 0.35);
+  --radius: 18px;
+  --shadow: 0 16px 44px rgba(0,0,0,0.5);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(1000px 600px at 10% -10%, #13203f, transparent 60%), var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+}
+
+/* Fullscreen center stage */
+.auth-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+}
+
+/* Subtle star/mesh background (optional) */
+.auth-container::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(600px 200px at 10% 0%, rgba(34,211,238,0.10), transparent 70%),
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+  pointer-events: none;
+}
+
+/* Card */
+.tech-glass-card {
+  width: min(440px, 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid #1f2a44;
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  animation: none; /* remove float */
+}
+
+/* Header */
+.tech-title {
+  margin: 0 0 6px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: var(--text);
+  text-shadow: none; /* no neon */
+}
+.tech-subtext {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: .98rem;
+}
+
+/* Form */
+.tech-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+/* Label + input wrapper for better spacing */
+.input-row {
+  display: grid;
+  gap: 6px;
+}
+
+.input-label {
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+/* Inputs */
+.tech-input {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid #223053;
+  background: rgba(10, 17, 35, 0.6);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.tech-input::placeholder { color: #7783a3; }
+.tech-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--ring);
+  background: rgba(10, 17, 35, 0.85);
+}
+
+/* Password field with show/hide */
+.input-with-toggle {
+  position: relative;
+}
+.toggle-visibility {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 8px;
+}
+.toggle-visibility:hover { color: var(--text); }
+
+/* Primary button */
+.tech-button {
+  margin-top: 4px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: #0b1020;
+  background: linear-gradient(to right, var(--primary), var(--primary-2));
+  box-shadow: 0 10px 22px var(--ring);
+  cursor: pointer;
+  transition: transform .15s ease;
+}
+.tech-button:hover { transform: translateY(-1px); }
+
+/* Secondary actions */
+.auth-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+}
+.auth-link {
+  background: transparent;
+  border: 0;
+  color: var(--primary-2);
+  cursor: pointer;
+  padding: 6px 0;
+  font-size: .92rem;
+}
+.auth-link.muted { color: var(--muted); }
+.auth-link:hover { color: var(--primary); }
+
+/* Error */
+.tech-error {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid #7f1d1d;
+  background: rgba(127, 29, 29, 0.2);
+  color: #fecaca;
+  border-radius: 12px;
+  font-size: .95rem;
+}
+
+/* Divider */
+.auth-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #1f2a44, transparent);
+  margin: 16px 0;
+  border: 0;
+}
+
+/* Footnote */
+.auth-footnote {
+  margin-top: 8px;
+  color: var(--muted);
+  text-align: center;
+  font-size: .9rem;
+}
+
+/* Light weight overlay grid (very subtle) */
+.glow-grid-overlay { display: none; } /* remove the old neon mesh */
+
+/* Responsive */
+@media (max-width: 420px) {
+  .tech-glass-card { padding: 22px; }
+  .auth-links { flex-direction: column; align-items: stretch; }
+}
